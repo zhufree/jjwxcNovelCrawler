@@ -4,3 +4,5 @@ requests
 PyQt5
 PyQt5-tools
 PyYAML
+nicegui
+ttkbootstrap
