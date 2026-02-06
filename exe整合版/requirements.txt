@@ -1,9 +1,0 @@
-opencc_python_reimplemented==0.1.6
-html2tex
-nump
-lxm
-request
-Pillo
-pyDe
-PyQt
-PyYAM
