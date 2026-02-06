@@ -1,8 +1,4 @@
 # -*- coding: UTF-8 -*-
-import requests
-from lxml import etree
-import json
-from io import BytesIO
 import base64
 import pyDes
 import hashlib

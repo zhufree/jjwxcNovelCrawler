@@ -28,7 +28,7 @@ def parse_chapters(cdic, novel_id, config):
             vcount += 1
             v = html.escape(i["chaptername"])
             if config.format_type == "txt":
-                v = re.sub('</?\w+[^>]*>', '', v).strip()
+                v = re.sub(r'</?\w+[^>]*>', '', v).strip()
             v = "§ " + v + " §"
             if config.custom_vol:
                 v = re.sub(r'\$1', str(vcount), config.custom_vol)
@@ -39,15 +39,16 @@ def parse_chapters(cdic, novel_id, config):
             # 普通章节
             u = f"https://app.jjwxc.net/androidapi/chapterContent?novelId={novel_id}&chapterId={i['chapterid']}"
             data.href_list.append(u)
-            v = html.escape(i["chaptername"])
-            v = re.sub('&&amp;#', '&#', v)
-            v = re.sub('</?\w+[^>]*>', '', v)
-            data.titleindex.append(v.strip())
-            v = html.escape(i["chapterintro"])
-            v = re.sub('&&amp;#', '&#', v)
+            chapter_name = html.escape(i["chaptername"])
+            chapter_name = re.sub('&&amp;#', '&#', chapter_name)
+            chapter_name = re.sub(r'</?\w+[^>]*>', '', chapter_name)
+            chapter_name = re.sub(r'\s+', '', chapter_name)
+            data.titleindex.append(chapter_name.strip())
+            chapter_intro = html.escape(i["chapterintro"])
+            chapter_intro = re.sub('&&amp;#', '&#', chapter_intro)
             if config.format_type == "txt":
-                v = re.sub('</?\w+[^>]*>', '', v)
-            data.summary_list.append(v.strip())
+                chapter_intro = re.sub(r'</?\w+[^>]*>', '', chapter_intro)
+            data.summary_list.append(chapter_intro.strip())
             if i["islock"] != "0":
                 loc.append(i["chapterid"])
 

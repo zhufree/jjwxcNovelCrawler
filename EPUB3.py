@@ -83,14 +83,14 @@ class epubfile():
                 if basename != 'C.xhtml' and basename != 'info.xhtml':
                     if sig < len(index) or sigr < len(rollSign):
                         if "vol" in basename:
-                            #rollSign[sigr] = re.sub('</?\w+[^>]*>', '', rollSign[sigr])
+                            #rollSign[sigr] = re.sub(r'</?\w+[^>]*>', '', rollSign[sigr])
                             nav_info += '''</ol></li>
     <li><a href="''' + basename + '''">
     ''' + rollSign[sigr] + '''</a>
     <ol>'''
                             sigr += 1
                         else:
-                            #index[sig] = re.sub('</?\w+[^>]*>', '', index[sig])
+                            #index[sig] = re.sub(r'</?\w+[^>]*>', '', index[sig])
                             nav_info += '''<li><a href="''' + basename + '''">''' + index[sig] + '''</a></li>
     '''
                             sig += 1
@@ -118,13 +118,13 @@ class epubfile():
                 if basename != 'C.xhtml' and basename != 'info.xhtml':
                     if sig < len(index) or sigr < len(rollSign):
                         if "vol" in basename:
-                            rollSign[sigr] = re.sub('</?\w+[^>]*>', '', rollSign[sigr])
+                            rollSign[sigr] = re.sub(r'</?\w+[^>]*>', '', rollSign[sigr])
                             tox_info += '''</navPoint><navPoint id="''' + str(count) + '''" playOrder="''' + str(count) + '''">
     <navLabel><text>''' + rollSign[sigr] + '''</text></navLabel><content src="''' + basename + '''"/>'''
                             sigr += 1
                             count += 1
                         else:
-                            index[sig] = re.sub('</?\w+[^>]*>', '', index[sig])
+                            index[sig] = re.sub(r'</?\w+[^>]*>', '', index[sig])
                             tox_info += '''<navPoint id="''' + str(count) + '''" playOrder="''' + str(count) + '''">
                                 <navLabel><text>''' + index[
                                 sig] + '''</text></navLabel><content src="''' + basename + '''"/></navPoint>'''

@@ -240,7 +240,7 @@ def rename_chapter_files(source_dir, chapter_data, config):
                 title = chapter_data.titleindex[idx].strip()
                 title = utils.convert_text(title, config.state)
                 title = utils.sanitize_filename(title)
-                new_name = f"{str(chap_num).zfill(chapter_data.fill_num)}_{title}.txt"
+                new_name = f"{title}.txt"
                 break
         new_path = os.path.join(source_dir, new_name)
         if filepath != new_path and not os.path.exists(new_path):

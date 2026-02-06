@@ -37,7 +37,7 @@ class App(ttk.Window):
 
     def __init__(self):
         super().__init__(title='晋江小说下载器', themename='cosmo',
-                         size=(720, 780), resizable=(True, True))
+                         size=(840, 840), resizable=(True, True))
         self._downloading = False
         self._build_ui()
         self._load_config()
