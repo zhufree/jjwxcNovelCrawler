@@ -250,8 +250,8 @@ def rename_chapter_files(source_dir, chapter_data, config):
                     new_name = f"{title}.txt"
                     break
         new_path = os.path.join(source_dir, new_name)
-        if filepath != new_path and not os.path.exists(new_path):
-            os.rename(filepath, new_path)
+        if filepath != new_path:
+            os.replace(filepath, new_path)
 
 
 def merge_txt_files(source_dir, output_file):

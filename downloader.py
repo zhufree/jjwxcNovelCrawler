@@ -50,7 +50,7 @@ class NovelDownloader:
 
     def _download_and_save_chapter(self, chapter_url):
         """下载并保存单个章节"""
-        title = chapter.build_title(chapter_url, self.chapter_data, self.config)
+        title = chapter.build_content_title(chapter_url, self.chapter_data, self.config)
         raw = api.fetch_chapter_content(chapter_url, self.config.token)
         content, failed = chapter.format_content(
             title, raw, self.config, self.chapter_data.fill_num

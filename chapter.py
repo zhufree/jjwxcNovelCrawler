@@ -118,6 +118,20 @@ def build_title(chapter_url, chapter_data, config):
     return title
 
 
+def build_content_title(chapter_url, chapter_data, config):
+    """构建写入章节正文的标题，允许显示选项补充自定义标题。"""
+    title = build_title(chapter_url, chapter_data, config)
+
+    if config.custom_title and config.show_title and '$2' not in config.custom_title:
+        idx = chapter_data.href_list.index(chapter_url)
+        chapter_title = chapter_data.titleindex[idx].strip()
+        if chapter_title:
+            chapter_title = utils.convert_text(chapter_title, config.state)
+            title = f"{title} {chapter_title}".strip()
+
+    return title
+
+
 def format_content(title, raw_data, config, fill_num):
     """
     格式化章节内容
